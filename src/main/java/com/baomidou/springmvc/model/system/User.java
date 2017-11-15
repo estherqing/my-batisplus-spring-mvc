@@ -1,12 +1,12 @@
 package com.baomidou.springmvc.model.system;
 
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.springmvc.common.SuperEntity;
 import com.baomidou.springmvc.model.enums.TypeEnum;
+
+import java.util.Date;
 
 /**
  * 系统用户表
@@ -19,11 +19,11 @@ public class User extends SuperEntity {
      */
     private String name;
     /**
-     * 用户年龄
+     * 通用枚举测试
      */
     private TypeEnum type;
     /**
-     * 通用枚举测试
+     * 用户年龄
      */
     private Integer age;
     /**
