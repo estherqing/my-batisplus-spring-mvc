@@ -6,5 +6,8 @@
 	<sql id="Base_Column_List">
 		id, name, age
 	</sql>
+    <select id="getUserList" resultType="com.baomidou.springmvc.model.system.User">
+
+	</select>
 
 </mapper>

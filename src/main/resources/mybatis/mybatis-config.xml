@@ -33,5 +33,34 @@
         <setting name="defaultExecutorType" value="REUSE"/>
         <setting name="defaultStatementTimeout" value="25000"/>
     </settings>
+    <plugins>
+        <!--
+    | 分页插件配置
+    | 插件提供二种方言选择：1、默认方言 2、自定义方言实现类，两者均未配置则抛出异常！
+    | overflowCurrent 溢出总页数，设置第一页 默认false
+    | optimizeType Count优化方式 （ 版本 2.0.9 改为使用 jsqlparser 不需要配置 ）
+    | -->
+        <!-- 注意!! 如果要支持二级缓存分页使用类 CachePaginationInterceptor 默认、建议如下！！ -->
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+            <!--<property name="sqlParser" ref="自定义解析类、可以没有" />-->
+            <property name="localPage" value="默认 false 改为 true 开启了 pageHeper 支持、可以没有" />
+            <property name="dialectClazz" value="自定义方言类、可以没有" />
+        </plugin>
+
+        <!-- SQL 执行分析拦截器 stopProceed 发现全表执行 delete update 是否停止运行 -->
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.SqlExplainInterceptor">
+            <property name="stopProceed" value="false" />
+        </plugin>
+
+        <!-- SQL 执行性能分析，开发环境使用，线上不推荐。 maxTime 指的是 sql 最大执行时长 -->
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.PerformanceInterceptor">
+            <property name="maxTime" value="100" />
+            <!--SQL是否格式化 默认false-->
+            <property name="format" value="true" />
+        </plugin>
+
+        <!--乐观锁-->
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor"></plugin>
+    </plugins>
 
 </configuration>

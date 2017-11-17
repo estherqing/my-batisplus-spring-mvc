@@ -52,14 +52,14 @@ public class MysqlGenerator {
         AutoGenerator mpg = new AutoGenerator().setGlobalConfig(
                 // 全局配置
                 new GlobalConfig()
-                        .setOutputDir("/develop/code/")//输出目录
+                        .setOutputDir(System.getProperty("user.dir")+"/src/test/java/")//输出目录
                         .setFileOverride(true)// 是否覆盖文件
                         .setActiveRecord(true)// 开启 activeRecord 模式
                         .setEnableCache(false)// XML 二级缓存
                         .setBaseResultMap(true)// XML ResultMap
                         .setBaseColumnList(true)// XML columList
                         //.setKotlin(true) 是否生成 kotlin 代码
-                        .setAuthor("Yanghu")
+                        .setAuthor("esther")
                 // 自定义文件命名，注意 %s 会自动填充表实体属性！
                 // .setMapperName("%sDao")
                 // .setXmlName("%sDao")
@@ -94,19 +94,19 @@ public class MysqlGenerator {
                         .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
                         // .setInclude(new String[] { "user" }) // 需要生成的表
                         // .setExclude(new String[]{"test"}) // 排除生成的表
-                        // 自定义实体父类
-                         .setSuperEntityClass("com.baomidou.demo.SuperEntity")
+                        // 自定义实体父类，父类是已存在的类
+                         .setSuperEntityClass("com.baomidou.springmvc.common.SuperEntity")
                         // 自定义实体，公共字段
                         .setSuperEntityColumns(new String[]{"id"})
                         .setTableFillList(tableFillList)
                 // 自定义 mapper 父类
-                 .setSuperMapperClass("com.baomidou.demo.SuperMapper")
+                // .setSuperMapperClass("com.baomidou.mybatis.plus.SuperMapper")
                 // 自定义 service 父类
                 // .setSuperServiceClass("com.baomidou.demo.TestService")
                 // 自定义 service 实现类父类
                 // .setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl")
                 // 自定义 controller 父类
-                 .setSuperControllerClass("com.baomidou.demo.SuperController")
+                // .setSuperControllerClass("com.baomidou.mybatis.plus.SuperController")
                 // 【实体】是否生成字段常量（默认 false）
                 // public static final String ID = "test_id";
                 // .setEntityColumnConstant(true)
@@ -122,7 +122,7 @@ public class MysqlGenerator {
         ).setPackageInfo(
                 // 包配置
                 new PackageConfig()
-                        .setModuleName("springmvc")
+                        .setModuleName("mybatis.plus")
                         .setParent("com.baomidou")// 自定义包路径
                         .setController("controller")// 这里是控制器包名，默认 web
         ).setCfg(
@@ -138,7 +138,7 @@ public class MysqlGenerator {
                     // 自定义输出文件目录
                     @Override
                     public String outputFile(TableInfo tableInfo) {
-                        return "/develop/code/xml/" + tableInfo.getEntityName() + ".xml";
+                        return System.getProperty("user.dir")+"/src/main/resources/mybatis/system/" + tableInfo.getEntityName() + "Mapper.xml";
                     }
                 }))
         ).setTemplate(

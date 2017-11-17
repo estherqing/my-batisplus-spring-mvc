@@ -91,6 +91,8 @@
 	    <!-- <property name="dbType" value="oracle" /> -->
 	    <!-- 全局表为下划线命名设置 true -->
 	    <!-- <property name="dbColumnUnderline" value="true" /> -->
+
+        <!-- 公共字段填充处理器 -->
         <property name="metaObjectHandler">
             <bean class="com.baomidou.springmvc.common.MyMetaObjectHandler" />
         </property>
